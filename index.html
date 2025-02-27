@@ -28,13 +28,12 @@
         /* Estilos para las imágenes */
         .slider {
             display: flex;
-            width: 400%;
-            transition: transform 0.9s ease-in-out;
+            transition: transform 1.0s ease-in-out;
         }
 
         .slider img {
             width: 100%;
-            height: auto;  /* Cambiado a auto para que se ajuste mejor */
+            height: auto;
             object-fit: cover;
             border-radius: 10px;
         }
@@ -52,7 +51,7 @@
             font-size: 20px;
             border-radius: 5px;
             z-index: 10;
-            width: 40px;  /* Asegurando que los botones sean de un tamaño adecuado */
+            width: 40px;
             height: 40px;
         }
 
@@ -229,22 +228,41 @@
                 <img src="iglesia2.jpg" alt="Imagen 2">
                 <img src="iglesia3.jpg" alt="Imagen 3">
                 <img src="iglesia4.jpeg" alt="Imagen 4">
+                <img src="ilgesia1.jpg" alt="Imagen 1 Clon"> <!-- Clon para efecto infinito -->
             </div>
             <button class="prev" onclick="moverSlider(-1)">&#10094;</button>
             <button class="next" onclick="moverSlider(1)">&#10095;</button>
         </div>
-
+    
         <script>
             let indice = 0;
+            const slider = document.querySelector('.slider');
+            const imagenes = document.querySelectorAll('.slider img');
+            const totalImagenes = imagenes.length;
+            const anchoImagen = 100; // Porcentaje de ancho de cada imagen
+    
             function moverSlider(direccion) {
-                const slider = document.querySelector('.slider');
-                const totalImagenes = document.querySelectorAll('.slider img').length;
-    
                 indice += direccion;
-                if (indice >= totalImagenes) { indice = 0; }
-                if (indice < 0) { indice = totalImagenes - 1; }
     
-                slider.style.transform = `translateX(${-indice * 100}%)`;
+                if (indice >= totalImagenes - 1) {
+                    setTimeout(() => {
+                        slider.style.transition = "none";
+                        indice = 0;
+                        slider.style.transform = `translateX(${-indice * anchoImagen}%)`;
+                    }, 900);
+                }
+    
+                if (indice < 0) {
+                    indice = totalImagenes - 2;
+                    slider.style.transition = "none";
+                    slider.style.transform = `translateX(${-indice * anchoImagen}%)`;
+                    setTimeout(() => {
+                        slider.style.transition = "transform 0.9s ease-in-out";
+                    });
+                }
+    
+                slider.style.transition = "transform 0.9s ease-in-out";
+                slider.style.transform = `translateX(${-indice * anchoImagen}%)`;
             }
     
             // Cambio automático cada 5 segundos
