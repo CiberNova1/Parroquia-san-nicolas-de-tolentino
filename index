@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider de Imágenes</title>
+    <style>
+        /* Estilos del contenedor del slider */
+        .slider-container {
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilos para las imágenes */
+        .slider {
+            display: flex;
+            width: 400%;
+            transition: transform 0.9s ease-in-out;
+        }
+
+        .slider img {
+            width: 100%;
+            height: 400px; /* Ajusta el tamaño según necesites */
+            object-fit: cover;
+        }
+
+        /* Botones de navegación */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+
+
+
+    <title>Parroquia San Nicolás de Tolentino</title>
+    
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Estilos para el header */
+        header {
+            background-color: #ecca8b;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            position: relative;
+        }
+
+        /* Estilos para la imagen en la esquina izquierda */
+        .esquina-izquierda {
+            position: absolute;
+            top: 7px;
+            left: 7px;
+            width: 150px;
+        }
+
+        /* Estilos para el menú de navegación */
+        nav {
+            background-color: #ecca8b;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        /* Estilos para las secciones */
+        section {
+            padding: 20px;
+        }
+
+        /* Estilos para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 3px solid black;
+            padding: 6px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ecca8b;
+        }
+
+        /* Estilos para el footer */
+        footer {
+            background-color: #ecca8b;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logocat01.jpg" alt="Imagen en la esquina izquierda" class="esquina-izquierda">
+        <p>Templo Parroquial San Nicolás de Tolentino Jaral del Progreso Guanajuato</p>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav>
+        <ul>
+            <li><a href="#historia">Historia</a></li>
+            <li><a href="#arquitectura">Arquitectura</a></li>
+            <li><a href="#fiestas">Fiestas</a></li>
+            <li><a href="#horarios">Horarios</a></li>
+            <li><a href="#eventos">Eventos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido -->
+    <section id="historia">
+        <h2>Historia</h2>
+        <p>1819: El 21 de agosto, se obtuvo el permiso para construir la primera capilla rural en la región.</p>
+        <p>1821: El 18 de septiembre, se inauguró oficialmente la capilla, marcando el inicio de un espacio dedicado al culto en la comunidad.</p>
+        <p>1850: Se inició la construcción del templo actual, reemplazando la estructura original para atender al creciente número de feligreses.</p>
+        <p>1884: Bajo la dirección del vicario fray Ángel M. Gasca, se completó la obra principal del templo.</p>
+    
+        <h2 style="text-align: center;">Galería de Imágenes</h2>
+
+        <div class="slider-container">
+            <div class="slider">
+                <img src="ilgesia1.jpg" alt="Imagen 1">
+                <img src="iglesia2.jpg" alt="Imagen 2">
+                <img src="iglesia3.jpg" alt="Imagen 3">
+                <img src="iglesia4.jpeg" alt="Imagen 4">
+            </div>
+            <button class="prev" onclick="moverSlider(-1)">&#10094;</button>
+            <button class="next" onclick="moverSlider(1)">&#10095;</button>
+        </div>
+    
+        <script>
+            let indice = 0;
+            function moverSlider(direccion) {
+                const slider = document.querySelector('.slider');
+                const totalImagenes = document.querySelectorAll('.slider img').length;
+    
+                indice += direccion;
+                if (indice >= totalImagenes) { indice = 0; }
+                if (indice < 0) { indice = totalImagenes - 1; }
+    
+                slider.style.transform = `translateX(${-indice * 100}%)`;
+            }
+    
+            // Cambio automático cada 3 segundos
+            setInterval(() => moverSlider(1), 5000);
+        </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </section>
+
+    <section id="arquitectura">
+        <h2>Arquitectura</h2>
+        <p>La Parroquia de San Nicolás de Tolentino exhibe una arquitectura que combina elementos barrocos y neoclásicos.</p>
+        <p>El estilo barroco se manifiesta en los retablos dorados y la ornamentación detallada del interior del templo.</p>
+        <p>Las influencias neoclásicas son evidentes en la fachada y la estructura general del edificio.</p>
+    </section>
+
+    <section id="fiestas">
+        <h2>Fiestas y Tradiciones</h2>
+        <p>Cada 10 de septiembre, la comunidad celebra la festividad en honor a San Nicolás de Tolentino.</p>
+        <p>Las celebraciones incluyen misas, procesiones, danzas tradicionales, fuegos artificiales y música de bandas locales.</p>
+    </section>
+
+    <section id="horarios">
+        <h2>Horarios de Misa</h2>
+        <table>
+            <tr>
+                <th>Dia</th>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+                <th>Sábado</th>
+                <th>Domingo</th>
+            </tr>
+            <tr>
+                <td>Horarios</td>
+                <td>08:00 a.m. | 06:00 p.m. y 07:00 p.m.</td>
+                <td>08:00 a.m. | 06:00 p.m. y 07:00 p.m.</td>
+                <td>08:00 a.m. | 06:00 p.m. y 07:00 p.m.</td>
+                <td>08:00 a.m. | 06:00 p.m. y 07:00 p.m.</td>
+                <td>08:00 a.m. | 06:00 p.m. y 07:00 p.m.</td>
+                <td>08:00 a.m. | 07:00 p.m.</td>
+                <td>07:00 a.m., 09:30 a.m. y 11:00 a.m. | 12:00 p.m., 06:00 p.m. y 07:00 p.m.</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="eventos">
+        <h2>Próximos Eventos</h2>
+        <p>Información sobre próximos eventos.</p>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <section id="ubicacion">
+            <p><strong>Encuéntranos aquí:</strong></p>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.499920684323!2d-101.06478722408336!3d20.374897381073586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842cbac0549f649f%3A0xd96fb982b2e269b5!2sParroquia%20de%20San%20Nicol%C3%A1s%20de%20Tolentino!5e0!3m2!1ses!2smx!4v1708973649832!5m2!1ses!2smx" 
+                width="100%" 
+                height="300" 
+                style="border:3;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </section>
+        <p><strong>Dirección:</strong> Manuel Doblado #102, Jaral del Progreso, México</p>
+        <p><strong>Teléfono:</strong> 411 661 0034</p>
+    </section>
+
+    <footer>
+        &copy; 2025 San Nicolas de Tolentino. Todos los derechos reservados.
+    </footer>
+
+</body>
+</html>
