@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slider de Imágenes</title>
     <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
         /* Estilos del contenedor del slider */
         .slider-container {
             width: 80%;
@@ -13,7 +22,7 @@
             overflow: hidden;
             position: relative;
             border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Estilos para las imágenes */
@@ -25,8 +34,9 @@
 
         .slider img {
             width: 100%;
-            height: 400px; /* Ajusta el tamaño según necesites */
+            height: 400px; 
             object-fit: cover;
+            border-radius: 10px;
         }
 
         /* Botones de navegación */
@@ -41,6 +51,7 @@
             cursor: pointer;
             font-size: 20px;
             border-radius: 5px;
+            z-index: 10;
         }
 
         .prev { left: 10px; }
@@ -48,20 +59,6 @@
 
         .prev:hover, .next:hover {
             background-color: rgba(0, 0, 0, 0.8);
-        }
-    </style>
-
-
-
-    <title>Parroquia San Nicolás de Tolentino</title>
-    
-    <style>
-        /* Estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
         }
 
         /* Estilos para el header */
@@ -121,16 +118,18 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
 
         th, td {
-            border: 3px solid black;
+            border: 3px solid #ecca8b;
             padding: 6px;
             text-align: left;
         }
 
         th {
             background-color: #ecca8b;
+            color: white;
         }
 
         /* Estilos para el footer */
@@ -141,6 +140,25 @@
             width: 100%;
             position: relative;
             bottom: 0;
+        }
+
+        /* Media queries para hacer el diseño más responsivo */
+        @media (max-width: 768px) {
+            .slider-container {
+                width: 90%;
+            }
+
+            .slider img {
+                height: 300px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
@@ -183,7 +201,7 @@
             <button class="prev" onclick="moverSlider(-1)">&#10094;</button>
             <button class="next" onclick="moverSlider(1)">&#10095;</button>
         </div>
-    
+
         <script>
             let indice = 0;
             function moverSlider(direccion) {
@@ -197,50 +215,9 @@
                 slider.style.transform = `translateX(${-indice * 100}%)`;
             }
     
-            // Cambio automático cada 3 segundos
+            // Cambio automático cada 5 segundos
             setInterval(() => moverSlider(1), 5000);
         </script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     </section>
 
     <section id="arquitectura">
@@ -306,7 +283,7 @@
     </section>
 
     <footer>
-        &copy; 2025 San Nicolas de Tolentino. Todos los derechos reservados.
+        &copy; 2025 San Nicolás de Tolentino. Todos los derechos reservados.
     </footer>
 
 </body>
